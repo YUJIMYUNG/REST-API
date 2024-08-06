@@ -1,11 +1,17 @@
 package com.korea.restapi.service;
 
-import java.lang.reflect.Member;
-
+import com.korea.restapi.dto.LoginDTO;
 import com.korea.restapi.dto.MemberDTO;
-import com.korea.restapi.vo.MemberVO;
+import com.korea.restapi.entity.Member;
 
 public interface MemberService {
-	Member saveVO(Member member);
+	
+	Member saveEntity(Member member);
+	
 	Member saveDTO(MemberDTO memberDTO);
+	
+	Member findBuUserName(String userName);
+	
+	boolean login(LoginDTO loginDTO);
+	
 }
