@@ -7,17 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.korea.back.entity.Member;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class HomeController {
 
 	@GetMapping("/")
-	public String home(Model model, HttpSession session) {
-		
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		model.addAttribute("loginMember", loginMember);
+	public String home() {
+
 		
 		return "home";
 	}
+
+
 }
 
