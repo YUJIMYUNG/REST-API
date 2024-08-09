@@ -18,40 +18,41 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService{
 
 	private final MemberRepository memberRepository;
+	private final PasswordEncoder passwordEncoder;
 	
-	@Override
-	public Member saveEntity(Member member) {
-		return memberRepository.save(member);
-	}
-	
-	@Override
-	public Member saveDTO(MemberDTO memberDTO) {
-		Member member = Member.builder()
-										.userName(memberDTO.getUserName())
-										.password(memberDTO.getPassword())
-										.build();
-		return saveEntity(member);
-	}
-	
-	
-	//로그인
-	@Override
-	public Member findBuUserName(String userName) {
-		return memberRepository.findByUserName(userName);
-	}
-	
-	@Override
-	public boolean login(LoginDTO loginDTO) {
-		String userName = loginDTO.getUserName();
-		String password = loginDTO.getPassword();
-		Member byUserName = memberRepository.findByUserName(userName);
-		
-		if(byUserName != null) {
-			if( byUserName.getPassword().equals(password)) {
-				return true;
-			}
-		}
-		return false;
-	}
+//	@Override
+//	public Member saveEntity(Member member) {
+//		return memberRepository.save(member);
+//	}
+//
+//	@Override
+//	public Member saveDTO(MemberDTO memberDTO) {
+//		Member member = Member.builder()
+//										.userName(memberDTO.getUserName())
+//										.password(memberDTO.getPassword())
+//										.build();
+//		return saveEntity(member);
+//	}
+//
+//
+//	//로그인
+//	@Override
+//	public Member findBuUserName(String userName) {
+//		return memberRepository.findByUserName(userName);
+//	}
+//
+//	@Override
+//	public boolean login(LoginDTO loginDTO) {
+//		String userName = loginDTO.getUserName();
+//		String password = loginDTO.getPassword();
+//		Member byUserName = memberRepository.findByUserName(userName);
+//
+//		if(byUserName != null) {
+//			if( byUserName.getPassword().equals(password)) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 		
 }
